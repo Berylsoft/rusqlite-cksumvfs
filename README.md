@@ -1,3 +1,5 @@
+This repository is a fork that adds support for `cksumvfs` to rusqlite.
+
 # Rusqlite
 
 [![Latest Version](https://img.shields.io/crates/v/rusqlite.svg)](https://crates.io/crates/rusqlite)
@@ -27,7 +29,7 @@ In your Cargo.toml:
 # That said, it's not ideal for all scenarios and in particular, generic
 # libraries built around `rusqlite` should probably not enable it, which
 # is why it is not a default feature -- it could become hard to disable.
-rusqlite = { version = "0.40.1", features = ["bundled"] }
+rusqlite = { version = "0.40.1-cksumvfs", features = ["bundled"] }
 ```
 
 Simple example usage:
