@@ -26,6 +26,11 @@ mod bindings {
 }
 pub use bindings::*;
 
+extern "C" {
+    #[cfg(feature = "cksumvfs")]
+    pub fn sqlite3_register_cksumvfs(unused: *const u8) -> ::std::os::raw::c_int;
+}
+
 impl Default for sqlite3_vtab {
     fn default() -> Self {
         unsafe { mem::zeroed() }

@@ -8,12 +8,19 @@ TARGET_DIR="$SCRIPT_DIR/../target"
 export SQLITE3_LIB_DIR="$SCRIPT_DIR/sqlite3"
 mkdir -p "$TARGET_DIR" "$SQLITE3_LIB_DIR"
 
+SQLITE_VERSION=3530400
 # Download and extract amalgamation
-SQLITE=sqlite-amalgamation-3530400
+SQLITE=sqlite-amalgamation-$SQLITE_VERSION
 curl -O https://sqlite.org/2026/$SQLITE.zip
 unzip -p "$SQLITE.zip" "$SQLITE/sqlite3.c" > "$SQLITE3_LIB_DIR/sqlite3.c"
 unzip -p "$SQLITE.zip" "$SQLITE/sqlite3.h" > "$SQLITE3_LIB_DIR/sqlite3.h"
 unzip -p "$SQLITE.zip" "$SQLITE/sqlite3ext.h" > "$SQLITE3_LIB_DIR/sqlite3ext.h"
+rm -f "$SQLITE.zip"
+
+# Download and extract extra extensions
+SQLITE=sqlite-src-$SQLITE_VERSION
+curl -O https://sqlite.org/2026/$SQLITE.zip
+unzip -p "$SQLITE.zip" "$SQLITE/ext/misc/cksumvfs.c" > "$SQLITE3_LIB_DIR/cksumvfs.c"
 rm -f "$SQLITE.zip"
 
 export SQLITE3_INCLUDE_DIR="$SQLITE3_LIB_DIR"

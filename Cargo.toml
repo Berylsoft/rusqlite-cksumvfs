@@ -70,6 +70,7 @@ preupdate_hook = ["libsqlite3-sys?/preupdate_hook", "hooks"]
 fallible_uint = []
 i128_blob = []
 sqlcipher = ["libsqlite3-sys?/sqlcipher"]
+cksumvfs = ["bundled", "libsqlite3-sys/cksumvfs"]
 # SQLITE_ENABLE_UNLOCK_NOTIFY
 unlock_notify = ["libsqlite3-sys?/unlock_notify"]
 # if not SQLITE_OMIT_VIRTUALTABLE

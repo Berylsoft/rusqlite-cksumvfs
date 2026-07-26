@@ -255,6 +255,12 @@ mod build_bundled {
         if !win_target() {
             cfg.flag("-DHAVE_LOCALTIME_R");
         }
+
+        if cfg!(feature = "cksumvfs") {
+            cfg.flag("-DSQLITE_CKSUMVFS_STATIC");
+            cfg.file("sqlite3/cksumvfs.c");
+        }
+
         if env::var("TARGET").is_ok_and(|v| v.starts_with("wasm32-wasi")) {
             cfg.flag("-USQLITE_THREADSAFE")
                 .flag("-DSQLITE_THREADSAFE=0")
