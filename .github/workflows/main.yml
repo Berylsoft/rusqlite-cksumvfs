@@ -3,12 +3,12 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - cksumvfs
   pull_request:
     branches:
-      - master
-  schedule:
-    - cron: "00 01 * * *"
+      - cksumvfs
+  # schedule:
+  #   - cron: "00 01 * * *"
 env:
   RUST_BACKTRACE: short
   # CI builds don't benefit very much from this.
